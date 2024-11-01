@@ -5,6 +5,9 @@
         public static void Main(string[] args)
         {
             var reportGenerator = new ReportGenerator();
+
+            var AskidocReport = reportGenerator.CreateReport("Askidoc");
+            AskidocReport.Generate();
             
             var pdfReport = reportGenerator.CreateReport("PDF");
             pdfReport.Generate();

@@ -11,6 +11,10 @@ namespace ReportGenerator
         void Generate();
     }
 
+    public class AskidocReport : IReport
+    {
+        public void Generate() => Console.WriteLine("Askidoc Report Generated.");
+    }
     public class PdfReport : IReport
     {
         public void Generate() => Console.WriteLine("PDF Report Generated.");
@@ -30,7 +34,10 @@ namespace ReportGenerator
     {
         public IReport CreateReport(string reportType)
         {
-            if (reportType == "PDF")
+
+            if (reportType == "Askidoc")
+                return new AskidocReport();
+            else if (reportType == "PDF")
                 return new PdfReport();
             else if (reportType == "Excel")
                 return new ExcelReport();
