@@ -4,29 +4,21 @@
     {
         public static void Main(string[] args)
         {
-            var reportGenerator = new ReportGenerator();
+            var ascidocReport = new AskidocReport();
+            ascidocReport.Generate();
 
-            var AskidocReport = reportGenerator.CreateReport("Askidoc");
-            AskidocReport.Generate();
-            
-            var pdfReport = reportGenerator.CreateReport("PDF");
-            pdfReport.Generate();
-
-            var excelReport = reportGenerator.CreateReport("Excel");
+            var excelReport= new ExcelReport();
             excelReport.Generate();
 
-            var wordReport = reportGenerator.CreateReport("Word");
-            wordReport.Generate();
+            var PdfReport=new PdfReport();
+            PdfReport.Generate();
 
-            try
-            {
-                var invalidReport = reportGenerator.CreateReport("InvalidType");
-                invalidReport.Generate();
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            var WordReport=new WordReport();
+            WordReport.Generate();
+
+            
+            Console.WriteLine();
+            
         }
     }
 }
